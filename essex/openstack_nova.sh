@@ -67,7 +67,7 @@ echo "
 # network specific settings
 --network_manager=nova.network.manager.FlatDHCPManager
 --public_interface=eth0
---flat_interface=eth1
+--flat_interface=eth0
 --flat_network_bridge=br100
 --fixed_range=$fixed_range
 --floating_range=$floating_range
@@ -88,7 +88,7 @@ nova-manage db sync
 ./openstack_restart_nova.sh
 
 # no clue why we have to do this when it's in the config?
-nova-manage network create private --fixed_range_v4=$fixed_range --num_networks=1 --bridge=br100 --bridge_interface=eth1 --network_size=$fixed_size
+nova-manage network create private --fixed_range_v4=$fixed_range --num_networks=1 --bridge=br100 --bridge_interface=eth0 --network_size=$fixed_size
 nova-manage floating create --ip_range=$floating_range
 
 # do we need this?

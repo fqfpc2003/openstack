@@ -81,7 +81,7 @@ echo "
 --iscsi_helper=tgtadm
 --connection_type=libvirt
 --root_helper=sudo nova-rootwrap
---verbose
+--verbose=False
 " > /etc/nova/nova.conf
 
 # sync db

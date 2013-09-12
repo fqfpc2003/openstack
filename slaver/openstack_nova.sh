@@ -8,7 +8,7 @@ fi
 
 host_ip=$(/sbin/ifconfig eth0| sed -n 's/.*inet *addr:\([0-9\.]*\).*/\1/p')
 echo "#############################################################################################################"
-echo "The IP address for eth0 is probably $host_ip".  Keep in mind you need an eth1 for this to work.
+echo "The IP address for eth0 is probably $host_ip".
 echo "#############################################################################################################"
 read -p "Enter the ServerControlIP interface IP: " host_ip_entry
 read -p "Enter the computeControlIP ethernet interface IP: " host_ip_con

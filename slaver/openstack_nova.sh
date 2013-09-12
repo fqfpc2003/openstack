@@ -24,9 +24,9 @@ read -p "Enter the admin password : " SERVICE_PASSWORD
 
 # get nova
 apt-get update
-apt-get install nova-api nova-cert nova-common nova-compute nova-compute-kvm nova-network  nova-vncproxy nova-volume python-nova python-novaclient python-keystone python-keystoneclient python-mysqldb mysql-client curl
+apt-get install nova-api nova-cert nova-common nova-objectstore nova-scheduler nova-volume nova-consoleauth novnc python-nova python-novaclient nova-compute nova-compute-kvm  nova-network
 
-. ./stackrc
+./stackrc
 password=$SERVICE_PASSWORD
 
 # hack up the nova paste file

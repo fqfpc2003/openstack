@@ -23,7 +23,9 @@ read -p "Enter the floating netowrk size (eg. 32): " floating_size
 # get nova
 apt-get install nova-api nova-cert nova-common nova-doc nova-network nova-objectstore nova-scheduler nova-vncproxy nova-volume python-nova python-novaclient
 
-. ./stackrc
+source novarc
+echo "source novarc">>.bashrc
+
 password=$SERVICE_PASSWORD
 
 # hack up the nova paste file

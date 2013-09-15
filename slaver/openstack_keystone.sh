@@ -3,7 +3,7 @@ read -p "Enter the password you used for the MySQL users (nova, glance, keystone
 read -p "Enter the email address for service accounts (nova, glance, keystone): " email
 read -p "Enter the Controller Server IP: " host_ip_entry
 # set up env variables for testing
-cat > stackrc <<EOF
+cat > /root/novarc <<EOF
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=$password
@@ -15,5 +15,5 @@ export SERVICE_ENDPOINT="$host_ip_entry:35357/v2.0"
 export SERVICE_TENANT_NAME=service
 EOF
 
-chmod -R 777 stackrc
-./stackrc
+source /root/novarc
+echo "source novarc">>/root/.bashrc

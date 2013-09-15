@@ -14,7 +14,7 @@ read -p "Enter the password you used for the MySQL users (nova, glance, keystone
 read -p "Enter the email address for service accounts (nova, glance, keystone): " email
 
 # set up env variables for testing
-cat > novarc <<EOF
+cat > /root/novarc <<EOF
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=$password
@@ -26,8 +26,8 @@ export SERVICE_ENDPOINT="http://127.0.0.1:35357/v2.0"
 export SERVICE_TENANT_NAME=service
 EOF
 
-source novarc
-echo "source novarc">>.bashrc
+source /root/novarc
+echo "source novarc">>/root/.bashrc
 
 # edit keystone conf file to use templates and mysql
 cp /etc/keystone/keystone.conf /etc/keystone/keystone.conf.orig

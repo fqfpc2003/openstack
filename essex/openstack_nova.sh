@@ -11,14 +11,11 @@ echo "##########################################################################
 echo "The IP address for eth0 is probably $host_ip".  Keep in mind you need an eth1 for this to work.
 echo "#############################################################################################################"
 read -p "Enter the primary ethernet interface IP: " host_ip_entry
-read -p "Enter the fixed network (eg. 10.0.2.32/27): " fixed_range
-read -p "Enter the fixed starting IP (eg. 10.0.2.33): " fixed_start
 echo "#######################################################################################"
 echo "The floating range can be a subset of your current network.  Configure your DHCP server"
 echo "to block out the range before you choose it here.  An example would be 10.0.1.224-255"
 echo "#######################################################################################"
-read -p "Enter the floating network (eg. 10.0.1.224/27): " floating_range
-read -p "Enter the floating netowrk size (eg. 32): " floating_size
+
 
 # get nova
 apt-get install nova-api nova-cert nova-common nova-doc nova-network nova-objectstore nova-scheduler nova-vncproxy nova-volume python-nova python-novaclient
@@ -89,9 +86,6 @@ nova-manage db sync
 # restart nova
 ./openstack_restart_nova.sh
 
-# no clue why we have to do this when it's in the config?
-nova-manage network create private --fixed_range_v4=$fixed_range --num_networks=1 --bridge=br100 --bridge_interface=eth0 --network_size=$fixed_size
-nova-manage floating create --ip_range=$floating_range
 
 # do we need this?
 chown -R nova:nova /etc/nova/

@@ -90,10 +90,6 @@ nova-manage db sync
 # restart nova
 ./openstack_restart_nova.sh
 
-# no clue why we have to do this when it's in the config?
-nova-manage network create private --fixed_range_v4=$fixed_range --num_networks=1 --bridge=br100 --bridge_interface=eth0 --network_size=$fixed_size
-nova-manage floating create --ip_range=$floating_range
-
 # do we need this?
 chown -R nova:nova /etc/nova/
 

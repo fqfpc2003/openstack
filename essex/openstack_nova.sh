@@ -8,13 +8,19 @@ fi
 
 host_ip=$(/sbin/ifconfig eth0| sed -n 's/.*inet *addr:\([0-9\.]*\).*/\1/p')
 echo "#############################################################################################################"
-echo "The IP address for eth0 is probably $host_ip".  Keep in mind you need an eth1 for this to work.
+echo "The IP address for eth0 is probably $host_ip".
 echo "#############################################################################################################"
-read -p "Enter the primary ethernet interface IP: " host_ip_entry
+read -p "Enter the ServerControlIP interface IP: " host_ip_entry
+read -p "Enter the computeControlIP ethernet interface IP: " host_ip_con
+read -p "Enter the fixed network (eg. 10.0.2.32/27): " fixed_range
+read -p "Enter the fixed starting IP (eg. 10.0.2.33): " fixed_start
 echo "#######################################################################################"
 echo "The floating range can be a subset of your current network.  Configure your DHCP server"
 echo "to block out the range before you choose it here.  An example would be 10.0.1.224-255"
 echo "#######################################################################################"
+read -p "Enter the floating network (eg. 10.0.1.224/29): " floating_range
+read -p "Enter the floating network size (eg. 32): " floating_size
+read -p "Enter the admin password : " SERVICE_PASSWORD
 
 
 # get nova

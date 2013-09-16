@@ -90,6 +90,7 @@ nova-manage db sync
 # restart nova
 ./openstack_restart_nova.sh
 
+
 # do we need this?
 chown -R nova:nova /etc/nova/
 

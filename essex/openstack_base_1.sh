@@ -7,8 +7,8 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # install time server
-apt-get update && apt-get -y dist-upgrade
-apt-get install ntp
+apt-get -y update && apt-get -y dist-upgrade
+apt-get -y install ntp
 service ntp restart
 
 # modify timeserver configuration
@@ -19,11 +19,11 @@ sed -e "
 " -i /etc/ntp.conf
 
 # install tgt
-apt-get install tgt
+apt-get -y install tgt
 service tgt start
 
 # openiscsi-client
-apt-get install open-iscsi open-iscsi-utils
+apt-get -y install open-iscsi open-iscsi-utils
 
 # turn on forwarding
 echo 1 > /proc/sys/net/ipv4/ip_forward

@@ -1,7 +1,7 @@
-openstack-m
-===========
+Openstack for Production, Based on StackGeek's Sehll.
+===================================
 
-Openstack Master  Install
+Openstack Master and Slaver Install
 
 aptitude update
 

@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # get keystone
-apt-get install keystone python-keystone python-keystoneclient
+apt-get install keystone python-keystone python-keystoneclient  -y
 
 read -p "Enter the Master Server IP : " host_ip_entry
 read -p "Enter a token for the OpenStack services to auth with keystone: " token

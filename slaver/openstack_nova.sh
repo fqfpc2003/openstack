@@ -12,7 +12,9 @@ echo "The IP address for eth0 is probably $host_ip".
 echo "#############################################################################################################"
 read -p "Enter the Master Server IP : " host_ip_entry
 read -p "Enter the Localhost ethernet interface IP: " host_ip_local
-read -p "Enter the fixed network (eg. 10.0.2.32/27): " fixed_range
+read -p "Enter the fixed network (eg. 10.x.x.0/24): " fixed_range
+read -p "Enter the fixed netowrk size (Total of the CIDR IPS,/24=256): " fixed_size
+read -p "Enter the floating network (eg. 10.0.0.0/27): " floating_range
 read -p "Enter the admin password : " SERVICE_PASSWORD
 
 # get nova
@@ -93,7 +95,7 @@ echo "
 --public_interface=eth0
 --flat_interface=eth0
 --flat_network_bridge=br100
---fixed_range=$fixed_range
+--fixed_range=10.0.0.0/8
 --flat_injected=False
 --force_dhcp_release=True
 --multi_host=True
@@ -105,7 +107,8 @@ nova-manage db sync
 # restart nova
 ./openstack_restart_nova.sh
 
-
+nova-manage network create private --fixed_range_v4=$fixed_range --num_networks=1 --bridge=br100 --bridge_interface=eth0 --network_size=$fixed_size --multi_host=T
+nova-manage floating create --ip_range=$floating_range
 # do we need this?
 chown -R nova:nova /etc/nova/
 

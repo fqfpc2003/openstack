@@ -9,7 +9,7 @@ fi
 # get glance
 apt-get install glance glance-api glance-client glance-common glance-registry python-glance
 
-. ./stackrc
+. ./root/novarc
 password=$SERVICE_PASSWORD
 
 # edit glance api conf files 

@@ -30,6 +30,20 @@ EOF
 source /root/novarc
 echo "source novarc">>/root/.bashrc
 
+cat > stackrc <<EOF
+export OS_TENANT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=$password
+export OS_AUTH_URL="http://127.0.0.1:5000/v2.0/" 
+export ADMIN_PASSWORD=$password
+export SERVICE_PASSWORD=$password
+export SERVICE_TOKEN=$token
+export SERVICE_ENDPOINT="http://127.0.0.1:35357/v2.0"
+export SERVICE_TENANT_NAME=service
+EOF
+
+. ./stackrc
+
 # edit keystone conf file to use templates and mysql
 cp /etc/keystone/keystone.conf /etc/keystone/keystone.conf.orig
 sed -e "

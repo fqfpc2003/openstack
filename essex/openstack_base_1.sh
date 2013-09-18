@@ -8,7 +8,7 @@ fi
 
 # install time server
 apt-get update && apt-get -y dist-upgrade
-apt-get -y install ntp
+apt-get install ntp -y 
 service ntp restart
 
 # modify timeserver configuration

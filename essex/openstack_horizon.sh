@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # get horizon
-apt-get install libapache2-mod-wsgi openstack-dashboard
+apt-get install libapache2-mod-wsgi openstack-dashboard  -y
 
 # restart apache
 service apache2 restart

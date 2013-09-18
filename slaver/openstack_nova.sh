@@ -21,6 +21,7 @@ read -p "Enter the admin password : " SERVICE_PASSWORD
 apt-get update
 apt-get install nova-api nova-cert nova-common nova-objectstore nova-scheduler nova-volume nova-consoleauth novnc python-nova python-novaclient nova-compute nova-compute-kvm  nova-network
 
+. ./stackrc
 
 password=$SERVICE_PASSWORD
 

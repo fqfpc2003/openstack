@@ -9,6 +9,7 @@ fi
 # get keystone
 apt-get install keystone python-keystone python-keystoneclient
 
+read -p "Enter the Master Server IP : " host_ip_entry
 read -p "Enter a token for the OpenStack services to auth with keystone: " token
 read -p "Enter the password you used for the MySQL users (nova, glance, keystone): " password
 read -p "Enter the email address for service accounts (nova, glance, keystone): " email
@@ -38,6 +39,8 @@ sed -e "
 /^\[catalog\]/a template_file = /etc/keystone/default_catalog.templates
 /^connection =.*$/s/^.*$/connection = mysql:\/\/keystone:$password@127.0.0.1\/keystone/
 " -i /etc/keystone/keystone.conf
+
+sed -i 's/localhost/$host_ip_entry/g' /etc/keystone/default_catalog.templates
 
 # create db tables and restart
 keystone-manage db_sync

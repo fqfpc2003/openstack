@@ -17,3 +17,17 @@ EOF
 
 source /root/novarc
 echo "source novarc">>/root/.bashrc
+
+cat > stackrc <<EOF
+export OS_TENANT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=$password
+export OS_AUTH_URL="$host_ip_entry:5000/v2.0/" 
+export ADMIN_PASSWORD=$password
+export SERVICE_PASSWORD=$password
+export SERVICE_TOKEN=$token
+export SERVICE_ENDPOINT="$host_ip_entry:35357/v2.0"
+export SERVICE_TENANT_NAME=service
+EOF
+
+. ./stackrc

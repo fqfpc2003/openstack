@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # install time server
-apt-get -y update && apt-get -y dist-upgrade
+apt-get update && apt-get -y dist-upgrade
 apt-get -y install ntp
 service ntp restart
 

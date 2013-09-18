@@ -3,11 +3,11 @@ Openstack for Production
 
 Openstack Master and Slaver Install
 
-aptitude update
+-- aptitude update
 
-apt-get install git
+-- apt-get install git
 
-git clone git://github.com/fqfpc2003/openstack.git
+-- git clone git://github.com/fqfpc2003/openstack.git
 
 
 Based on StackGeek's Sehll.

@@ -27,7 +27,6 @@ export SERVICE_ENDPOINT="http://127.0.0.1:35357/v2.0"
 export SERVICE_TENANT_NAME=service
 EOF
 
-source /root/novarc
 echo "source novarc">>/root/.bashrc
 
 cat > stackrc <<EOF

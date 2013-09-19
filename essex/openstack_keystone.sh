@@ -54,8 +54,6 @@ sed -e "
 /^connection =.*$/s/^.*$/connection = mysql:\/\/keystone:$password@127.0.0.1\/keystone/
 " -i /etc/keystone/keystone.conf
 
-sed -i 's/localhost/$host_ip_entry/g' /etc/keystone/default_catalog.templates
-
 # create db tables and restart
 keystone-manage db_sync
 service keystone restart
